@@ -1,17 +1,20 @@
 import React from 'react'
 
 class Pet extends React.Component {
-  constructor(props) {
-    super(props);
+
+  handleAdoptClick = () => {
+    this.props.onAdoptPet(this.props.pet.id)
   };
 
   render() {
     let button;
 
-    if (this.props.isAdopted) {
+    if (this.props.pet.isAdopted) {
       button = <button className="ui disabled button">Already adopted</button>;
     } else {
-      button = <button className="ui primary button" onClick={this.props.onAdoptPetCallback} > 
+      button = <button 
+        className="ui primary button" 
+        onClick={ this.handleAdoptClick } > 
         Adopt pet
         </button>;
     }
@@ -20,7 +23,7 @@ class Pet extends React.Component {
       <div className="card">
         <div className="content">
           <a className="header">
-            { this.props.pet.gender === 'male' ? '♂' : '♀' }
+            { this.props.pet.name }{ "  "}{ this.props.pet.gender === 'male' ? '♂' : '♀' }
           </a>
           <div className="meta">
             <span className="date">{ this.props.pet.type }</span>

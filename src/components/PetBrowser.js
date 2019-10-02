@@ -3,9 +3,6 @@ import React from 'react'
 import Pet from './Pet'
 
 class PetBrowser extends React.Component {
-  constructor(props) {
-    super(props);
-  };
 
   render() {
     const petCards = this.props.pets.map(pet => 
@@ -13,7 +10,7 @@ class PetBrowser extends React.Component {
           pet={pet} 
           key={pet.id}
           isAdopted={pet.isAdopted} 
-          onAdoptPet={this.onAdoptPetCallback} 
+          onAdoptPet={this.props.onAdoptPet} 
         />
     )
 

@@ -17,7 +17,7 @@ class App extends React.Component {
 
   fetchPets = () => {
     let url = '/api/pets'
-    if (this.state.filters.type != 'all') {
+    if (this.state.filters.type !== 'all') {
       url += `?type=${this.state.filters.type}`
     };
 
@@ -40,11 +40,10 @@ class App extends React.Component {
     });
   };
 
-  onAdoptPetCallback = (event) => {
-    console.log("Adopting");
+  onAdoptPetCallback = (petId) => {
+    // console.log(petId);
     const pets = this.state.pets.map(pet => {
-      console.log(pet);
-      return pet.id === event ? { ...pet, isAdopted: true } : pet;
+      return pet.id === petId ? { ...pet, isAdopted: true } : pet;
     });
     this.setState({ pets: pets });
   };
